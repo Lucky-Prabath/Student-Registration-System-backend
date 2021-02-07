@@ -42,6 +42,7 @@ public interface EntityDTOMapper {
     List<StudentDTO> getStudentDTOs(List<Student> student);
 
     @Mapping(source = ".", target = "studentCoursePK")
+    @Mapping(source = ".", target = "registerDate", qualifiedByName = "registerDate")
     StudentCourse getStudentCourse(StudentCourseDTO dto);
 
     @InheritInverseConfiguration
@@ -77,6 +78,11 @@ public interface EntityDTOMapper {
 
     default StudentCoursePK getStudentCoursePK(StudentCourseDTO dto){
         return new StudentCoursePK(dto.getStudentId(), dto.getCourseCode());
+    }
+
+    @Named("registerDate")
+    default Date toDate(StudentCourseDTO dto){
+        return Date.valueOf(dto.getRegisterDate());
     }
 
     /*methods for get StudentCourseDTOs*/

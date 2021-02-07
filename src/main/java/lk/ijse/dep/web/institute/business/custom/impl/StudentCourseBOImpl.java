@@ -37,6 +37,7 @@ public class StudentCourseBOImpl implements StudentCourseBO {
             em.getTransaction().commit();
         }catch (Throwable t){
             em.getTransaction().rollback();
+            throw new RuntimeException(t);
         }
     }
 

@@ -18,7 +18,7 @@ import java.sql.Date;
 public class StudentCourse implements SuperEntity {
     @EmbeddedId
     private StudentCoursePK studentCoursePK;
-    @Column(name = "register_name", nullable = false)
+    @Column(name = "register_date", nullable = false)
     private Date registerDate;
     @Column(name = "register_fee", nullable = false)
     private BigDecimal registerFee;

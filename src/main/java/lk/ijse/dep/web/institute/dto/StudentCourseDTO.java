@@ -4,10 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
+import javax.json.bind.annotation.JsonbDateFormat;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.sql.Date;
+import java.time.LocalDate;
+
 
 /**
  * @author : Lucky Prabath <lucky.prabath94@gmail.com>
@@ -19,6 +21,7 @@ public class StudentCourseDTO implements Serializable {
 
     private int studentId;
     private String courseCode;
-    private Date registerDate;
+    @JsonbDateFormat("yyyy-MM-dd")
+    private LocalDate registerDate;
     private BigDecimal registerFee;
 }
