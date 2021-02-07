@@ -5,6 +5,7 @@ import lk.ijse.dep.web.institute.dto.StudentCourseDTO;
 import lk.ijse.dep.web.institute.dto.StudentDTO;
 import lk.ijse.dep.web.institute.entity.*;
 import org.mapstruct.InheritInverseConfiguration;
+import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
 import org.mapstruct.factory.Mappers;
@@ -15,6 +16,7 @@ import java.util.List;
  * @author : Lucky Prabath <lucky.prabath94@gmail.com>
  * @since : 2021-02-02
  **/
+@Mapper
 public interface EntityDTOMapper {
 
     EntityDTOMapper instance = Mappers.getMapper(EntityDTOMapper.class);
@@ -37,7 +39,7 @@ public interface EntityDTOMapper {
 
     List<StudentDTO> getStudentDTOs(List<Student> student);
 
-    @Mapping(source = ".", target = "studentCoursePk")
+    @Mapping(source = ".", target = "studentCoursePK")
     StudentCourse getStudentCourse(StudentCourseDTO dto);
 
     @InheritInverseConfiguration
@@ -57,10 +59,10 @@ public interface EntityDTOMapper {
     @Named("addressLine1")
     default String getAddressLine1(Student student){ return student.getAddress().getAddressLine1(); }
 
-    @Named("no")
+    @Named("addressLine2")
     default String getAddressLine2(Student student){ return student.getAddress().getAddressLine2(); }
 
-    @Named("no")
+    @Named("city")
     default String getCity(Student student){ return student.getAddress().getCity(); }
 
 

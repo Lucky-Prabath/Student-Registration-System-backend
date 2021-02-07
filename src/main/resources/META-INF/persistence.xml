@@ -7,7 +7,9 @@
 
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-<!--    <class>lk.ijse.dep.web.pos.entity.Customer</class>-->
+    <class>lk.ijse.dep.web.institute.entity.Student</class>
+    <class>lk.ijse.dep.web.institute.entity.Course</class>
+    <class>lk.ijse.dep.web.institute.entity.StudentCourse</class>
 
   </persistence-unit>
 </persistence>

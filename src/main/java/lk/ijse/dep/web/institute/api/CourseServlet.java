@@ -46,7 +46,6 @@ public class CourseServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Jsonb jsonb = JsonbBuilder.create();
-
         final EntityManagerFactory emf = (EntityManagerFactory) getServletContext().getAttribute("emf");
         EntityManager em = emf.createEntityManager();
 
@@ -107,13 +106,14 @@ public class CourseServlet extends HttpServlet {
             String id = req.getPathInfo().replace("/","");
             CourseDTO dto = jsonb.fromJson(req.getReader(), CourseDTO.class);
 
-            if(dto.getCode().trim().isEmpty() || dto.getDescription().trim().isEmpty() || dto.getDuration().trim().isEmpty()
+            if(dto.getCode() != null || dto.getDescription().trim().isEmpty() || dto.getDuration().trim().isEmpty()
                     || dto.getAudience() == null){
                 throw  new HttpResponseException(400, "Invalid details", null);
             }
 
             CourseBO courseBO = BOFactory.getInstance().getBO(BOTypes.COURSE);
             courseBO.setEntityManager(em);
+            dto.setCode(id);  // correction for update
             courseBO.updateCourse(dto);
             resp.setStatus(HttpServletResponse.SC_NO_CONTENT);
         }catch (JsonbException exp){
