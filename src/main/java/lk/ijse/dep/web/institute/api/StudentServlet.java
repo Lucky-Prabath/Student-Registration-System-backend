@@ -107,6 +107,7 @@ public class StudentServlet extends HttpServlet {
 
             StudentBO studentBO = BOFactory.getInstance().getBO(BOTypes.STUDENT);
             studentBO.setEntityManager(em);
+            dto.setId(Integer.parseInt(id));
             studentBO.updateStudent(dto);
             resp.setStatus(HttpServletResponse.SC_NO_CONTENT);
 
@@ -133,7 +134,7 @@ public class StudentServlet extends HttpServlet {
 
             StudentBO studentBO = BOFactory.getInstance().getBO(BOTypes.STUDENT);
             studentBO.setEntityManager(em);
-            studentBO.deleteStudent(id);
+            studentBO.deleteStudent(Integer.parseInt(id));
             resp.setStatus(HttpServletResponse.SC_NO_CONTENT);
 
         } catch (Exception e) {

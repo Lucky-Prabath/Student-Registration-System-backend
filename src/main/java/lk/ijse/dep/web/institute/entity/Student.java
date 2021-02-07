@@ -4,6 +4,8 @@ import lk.ijse.dep.web.institute.util.Gender;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
+
 import java.sql.Date;
 import java.util.List;
 

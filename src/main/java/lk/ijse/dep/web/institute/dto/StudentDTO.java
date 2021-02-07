@@ -6,8 +6,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.json.bind.annotation.JsonbDateFormat;
 import java.io.Serializable;
-import java.sql.Date;
+import java.time.LocalDate;
+import java.util.Date;
+
 
 /**
  * @author : Lucky Prabath <lucky.prabath94@gmail.com>
@@ -20,7 +23,8 @@ public class StudentDTO implements Serializable {
     private int id;
     private String studentName;
     private String contact;
-    private Date dob;
+    @JsonbDateFormat("yyyy-MM-dd")
+    private LocalDate dob;
     private Gender gender;
     private String no;
     private String addressLine1;

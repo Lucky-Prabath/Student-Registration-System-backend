@@ -8,5 +8,5 @@ import lk.ijse.dep.web.institute.entity.Student;
  * @author : Lucky Prabath <lucky.prabath94@gmail.com>
  * @since : 2021-02-01
  **/
-public class StudentDAOImpl extends CrudDAOImpl<Student, String> implements StudentDAO {
+public class StudentDAOImpl extends CrudDAOImpl<Student, Integer> implements StudentDAO {
 }

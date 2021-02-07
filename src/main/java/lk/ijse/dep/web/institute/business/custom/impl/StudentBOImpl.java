@@ -55,7 +55,7 @@ public class StudentBOImpl implements StudentBO {
     }
 
     @Override
-    public void deleteStudent(String studentId) throws Exception {
+    public void deleteStudent(Integer studentId) throws Exception {
         try {
             em.getTransaction().begin();
             studentDAO.delete(studentId);
@@ -80,7 +80,7 @@ public class StudentBOImpl implements StudentBO {
     }
 
     @Override
-    public StudentDTO getStudent(String studentId) throws Exception {
+    public StudentDTO getStudent(Integer studentId) throws Exception {
         try {
             em.getTransaction().begin();
             StudentDTO studentDTO = mapper.getStudentDTO(studentDAO.get(studentId));

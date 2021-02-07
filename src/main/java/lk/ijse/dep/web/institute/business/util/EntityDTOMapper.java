@@ -10,6 +10,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.Named;
 import org.mapstruct.factory.Mappers;
 
+import java.sql.Date;
 import java.util.List;
 
 /**
@@ -22,6 +23,7 @@ public interface EntityDTOMapper {
     EntityDTOMapper instance = Mappers.getMapper(EntityDTOMapper.class);
 
     @Mapping(source = ".", target = "address")
+    @Mapping(source = ".", target = "dob", qualifiedByName = "dob")
     Student getStudent(StudentDTO dto);
 
     @InheritInverseConfiguration
@@ -50,6 +52,11 @@ public interface EntityDTOMapper {
     /*methods for get student from dto*/
     default Address getAddress(StudentDTO dto){
         return new Address(dto.getNo(), dto.getAddressLine1(), dto.getAddressLine2(), dto.getCity());
+    }
+
+    @Named("dob")
+    default Date toDate(StudentDTO dto){
+        return Date.valueOf(dto.getDob());
     }
 
     /*get dto from student*/

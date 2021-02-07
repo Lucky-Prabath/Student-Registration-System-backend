@@ -15,9 +15,9 @@ public interface StudentBO extends SuperBO {
 
     public void updateStudent(StudentDTO studentDTO) throws Exception;
 
-    public void deleteStudent(String studentId) throws Exception;
+    public void deleteStudent(Integer studentId) throws Exception;
 
     public List<StudentDTO> getAllStudents() throws Exception;
 
-    public StudentDTO getStudent(String studentId) throws Exception;
+    public StudentDTO getStudent(Integer studentId) throws Exception;
 }
