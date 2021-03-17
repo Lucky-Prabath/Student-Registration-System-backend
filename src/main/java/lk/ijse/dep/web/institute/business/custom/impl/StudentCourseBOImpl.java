@@ -1,6 +1,7 @@
 package lk.ijse.dep.web.institute.business.custom.impl;
 
 import lk.ijse.dep.web.institute.business.custom.StudentCourseBO;
+import lk.ijse.dep.web.institute.business.util.DEPTransaction;
 import lk.ijse.dep.web.institute.business.util.EntityDTOMapper;
 import lk.ijse.dep.web.institute.dao.custom.StudentCourseDAO;
 import lk.ijse.dep.web.institute.dto.StudentCourseDTO;
@@ -32,15 +33,15 @@ public class StudentCourseBOImpl implements StudentCourseBO {
     }
 
     @Override
-    public void register(StudentCourseDTO dto) {
-        try {
-            em.getTransaction().begin();
+    public EntityManager getEntityManger() {
+        return this.em;
+    }
+
+    @DEPTransaction
+    @Override
+    public void register(StudentCourseDTO dto) throws Exception{
             studentCourseDAO.save(mapper.getStudentCourse(dto));
             em.getTransaction().commit();
-        }catch (Throwable t){
-            em.getTransaction().rollback();
-            throw new RuntimeException(t);
-        }
     }
 
     //todo:- check whole class
