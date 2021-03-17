@@ -2,6 +2,7 @@ package lk.ijse.dep.web.institute;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 /**
  * @author : Lucky Prabath <lucky.prabath94@gmail.com>
@@ -10,5 +11,6 @@ import org.springframework.context.annotation.Configuration;
 
 @ComponentScan
 @Configuration
+@EnableAspectJAutoProxy
 public class AppConfig {
 }
