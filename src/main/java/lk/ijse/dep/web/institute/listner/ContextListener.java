@@ -26,6 +26,13 @@ public class ContextListener implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
+
+        try {
+            Class.forName("lk.ijse.dep.web.institute.AppInitializer");
+        } catch (ClassNotFoundException e) {
+            logger.error("Failed to load spring container");
+        }
+
         Properties prop = new Properties();
         try {
             logger.info("Session factory has initialized");
