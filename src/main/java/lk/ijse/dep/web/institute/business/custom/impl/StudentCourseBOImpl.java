@@ -2,10 +2,10 @@ package lk.ijse.dep.web.institute.business.custom.impl;
 
 import lk.ijse.dep.web.institute.business.custom.StudentCourseBO;
 import lk.ijse.dep.web.institute.business.util.EntityDTOMapper;
-import lk.ijse.dep.web.institute.dao.DAOFactory;
-import lk.ijse.dep.web.institute.dao.DAOTypes;
 import lk.ijse.dep.web.institute.dao.custom.StudentCourseDAO;
 import lk.ijse.dep.web.institute.dto.StudentCourseDTO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
 
@@ -13,14 +13,16 @@ import javax.persistence.EntityManager;
  * @author : Lucky Prabath <lucky.prabath94@gmail.com>
  * @since : 2021-02-03
  **/
+
+@Component
 public class StudentCourseBOImpl implements StudentCourseBO {
 
     private EntityManager em;
-    private final StudentCourseDAO studentCourseDAO;
+    @Autowired
+    private StudentCourseDAO studentCourseDAO;
     private final EntityDTOMapper mapper = EntityDTOMapper.instance;
 
     public StudentCourseBOImpl() {
-        studentCourseDAO = DAOFactory.getInstance().getDAO(DAOTypes.STUDENTCOURSE);
     }
 
     @Override
