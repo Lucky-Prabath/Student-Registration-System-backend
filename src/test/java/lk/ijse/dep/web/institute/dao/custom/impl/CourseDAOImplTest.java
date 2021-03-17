@@ -1,8 +1,5 @@
 package lk.ijse.dep.web.institute.dao.custom.impl;
 
-import lk.ijse.dep.web.institute.dao.DAOFactory;
-import lk.ijse.dep.web.institute.dao.DAOTypes;
-import lk.ijse.dep.web.institute.dao.SuperDAO;
 import lk.ijse.dep.web.institute.dao.custom.CourseDAO;
 import lk.ijse.dep.web.institute.entity.Course;
 import lk.ijse.dep.web.institute.util.Audience;
