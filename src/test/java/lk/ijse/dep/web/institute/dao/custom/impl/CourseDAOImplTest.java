@@ -1,5 +1,6 @@
 package lk.ijse.dep.web.institute.dao.custom.impl;
 
+import lk.ijse.dep.web.institute.AppInitializer;
 import lk.ijse.dep.web.institute.dao.custom.CourseDAO;
 import lk.ijse.dep.web.institute.entity.Course;
 import lk.ijse.dep.web.institute.util.Audience;
@@ -17,7 +18,7 @@ public class CourseDAOImplTest {
     @Test
     public void save() throws Exception {
         Course course = new Course("C001", "java", "10", Audience.AFTERAL);
-        CourseDAO courseDAO = DAOFactory.getInstance().getDAO(DAOTypes.COURSE);
+        CourseDAO courseDAO = AppInitializer.getContext().getBean(CourseDAO.class);
         courseDAO.setEntityManager(JPAUtil.getEntityManagerFactory().createEntityManager());
         courseDAO.save(course);
 //        Course course1 = courseDAO.get("C001");

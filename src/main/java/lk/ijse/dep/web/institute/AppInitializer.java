@@ -18,7 +18,7 @@ public class AppInitializer {
         return ctx;
     }
 
-    private static AnnotationConfigApplicationContext getContext(){
+    public static AnnotationConfigApplicationContext getContext(){
         return ctx;
     }
 }
