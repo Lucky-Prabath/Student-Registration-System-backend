@@ -19,7 +19,8 @@ import javax.persistence.EntityManager;
 @Transactional
 public class StudentCourseBOImpl implements StudentCourseBO {
 
-    private final EntityDTOMapper mapper = EntityDTOMapper.instance;
+    @Autowired
+    private EntityDTOMapper mapper;
     @Autowired
     private StudentCourseDAO studentCourseDAO;
 

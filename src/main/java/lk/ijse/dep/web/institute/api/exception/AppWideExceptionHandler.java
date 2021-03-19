@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class AppWideExceptionHandler {
 
     Logger logger = LoggerFactory.getLogger(AppWideExceptionHandler.class);
-    
+
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(Throwable.class)
     public String globalExceptionHandler(Throwable t){

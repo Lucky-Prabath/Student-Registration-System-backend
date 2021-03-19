@@ -20,7 +20,8 @@ import java.util.List;
 @Transactional
 public class StudentBOImpl implements StudentBO {
 
-    private final EntityDTOMapper mapper = EntityDTOMapper.instance;
+    @Autowired
+    private EntityDTOMapper mapper;
     @Autowired
     private StudentDAO studentDAO;
 
@@ -42,6 +43,7 @@ public class StudentBOImpl implements StudentBO {
         studentDAO.delete(studentId);
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<StudentDTO> findAllStudents() throws Exception {
         List<StudentDTO> studentDTOS = mapper.getStudentDTOs(studentDAO.getAll());
