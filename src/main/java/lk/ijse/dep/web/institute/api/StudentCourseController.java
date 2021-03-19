@@ -1,8 +1,10 @@
 package lk.ijse.dep.web.institute.api;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import lk.ijse.dep.web.institute.business.custom.StudentCourseBO;
+import lk.ijse.dep.web.institute.dto.StudentCourseDTO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author : Lucky Prabath <lucky.prabath94@gmail.com>
@@ -13,4 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin
 @RestController
 public class StudentCourseController {
+
+    @Autowired
+    private StudentCourseBO studentCourseBO;
+
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void register(@RequestBody StudentCourseDTO dto) throws Exception {
+        studentCourseBO.register(dto);
+    }
 }
