@@ -4,7 +4,6 @@ import lk.ijse.dep.web.institute.AppInitializer;
 import lk.ijse.dep.web.institute.dao.custom.CourseDAO;
 import lk.ijse.dep.web.institute.entity.Course;
 import lk.ijse.dep.web.institute.util.Audience;
-import lk.ijse.dep.web.institute.util.JPAUtil;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
