@@ -17,10 +17,10 @@ import java.util.List;
  * @author : Lucky Prabath <lucky.prabath94@gmail.com>
  * @since : 2021-02-02
  **/
-@Mapper
+@Mapper(componentModel = "spring")
 public interface EntityDTOMapper {
 
-    EntityDTOMapper instance = Mappers.getMapper(EntityDTOMapper.class);
+//    EntityDTOMapper instance = Mappers.getMapper(EntityDTOMapper.class);
 
     @Mapping(source = ".", target = "address")
     @Mapping(source = ".", target = "dob", qualifiedByName = "dob")

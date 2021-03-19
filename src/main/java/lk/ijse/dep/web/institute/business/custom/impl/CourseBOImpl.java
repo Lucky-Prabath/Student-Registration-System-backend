@@ -19,7 +19,8 @@ import java.util.List;
 @Transactional
 public class CourseBOImpl implements CourseBO {
 
-    private final EntityDTOMapper mapper = EntityDTOMapper.instance;
+    @Autowired
+    private EntityDTOMapper mapper;
     @Autowired
     private CourseDAO courseDAO;
 
@@ -42,9 +43,15 @@ public class CourseBOImpl implements CourseBO {
         courseDAO.delete(courseId);
     }
 
+    @Transactional(readOnly = true)
     @Override
-    public List<CourseDTO> getAllCourses() throws Exception {
+    public List<CourseDTO> findAllCourses() throws Exception {
         List<CourseDTO> courseDTOS = mapper.getCourseDTOs(courseDAO.getAll());
         return courseDTOS;
+    }
+
+    @Override
+    public CourseDTO findCourse(String code) throws Exception {
+        return mapper.getCourseDTO(courseDAO.get(code));
     }
 }
