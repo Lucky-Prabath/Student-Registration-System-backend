@@ -43,13 +43,13 @@ public class StudentBOImpl implements StudentBO {
     }
 
     @Override
-    public List<StudentDTO> getAllStudents() throws Exception {
+    public List<StudentDTO> findAllStudents() throws Exception {
         List<StudentDTO> studentDTOS = mapper.getStudentDTOs(studentDAO.getAll());
         return studentDTOS;
     }
 
     @Override
-    public StudentDTO getStudent(Integer studentId) throws Exception {
+    public StudentDTO findStudent(Integer studentId) throws Exception {
         StudentDTO studentDTO = mapper.getStudentDTO(studentDAO.get(studentId));
         return studentDTO;
     }

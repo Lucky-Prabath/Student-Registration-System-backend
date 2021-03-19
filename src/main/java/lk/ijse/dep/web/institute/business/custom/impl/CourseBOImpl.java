@@ -43,8 +43,13 @@ public class CourseBOImpl implements CourseBO {
     }
 
     @Override
-    public List<CourseDTO> getAllCourses() throws Exception {
+    public List<CourseDTO> findAllCourses() throws Exception {
         List<CourseDTO> courseDTOS = mapper.getCourseDTOs(courseDAO.getAll());
         return courseDTOS;
+    }
+
+    @Override
+    public CourseDTO findCourse(String code) throws Exception {
+        return mapper.getCourseDTO(courseDAO.get(code));
     }
 }
