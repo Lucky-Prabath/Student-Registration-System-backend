@@ -1,6 +1,6 @@
 package lk.ijse.dep.web.institute.api;
 
-import lk.ijse.dep.web.institute.AppInitializer;
+import lk.ijse.dep.web.institute.WebAppInitializer;
 import lk.ijse.dep.web.institute.business.custom.StudentCourseBO;
 import lk.ijse.dep.web.institute.dto.StudentCourseDTO;
 import lk.ijse.dep.web.institute.exception.HttpResponseException;
@@ -9,8 +9,6 @@ import lk.ijse.dep.web.institute.exception.ResponseExceptionUtil;
 import javax.json.bind.Jsonb;
 import javax.json.bind.JsonbBuilder;
 import javax.json.bind.JsonbException;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -46,7 +44,7 @@ public class StudentCourseServlet extends HttpServlet {
                 throw new HttpResponseException(400, "Invalid registration details", null);
             }
 
-            StudentCourseBO studentCourseBO = AppInitializer.getContext().getBean(StudentCourseBO.class);
+            StudentCourseBO studentCourseBO = WebAppInitializer.getContext().getBean(StudentCourseBO.class);
 
             studentCourseBO.register(dto);
             resp.setStatus(HttpServletResponse.SC_CREATED);

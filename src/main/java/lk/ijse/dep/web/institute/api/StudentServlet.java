@@ -1,6 +1,6 @@
 package lk.ijse.dep.web.institute.api;
 
-import lk.ijse.dep.web.institute.AppInitializer;
+import lk.ijse.dep.web.institute.WebAppInitializer;
 import lk.ijse.dep.web.institute.business.custom.StudentBO;
 import lk.ijse.dep.web.institute.dto.StudentDTO;
 import lk.ijse.dep.web.institute.exception.HttpResponseException;
@@ -9,8 +9,6 @@ import lk.ijse.dep.web.institute.exception.ResponseExceptionUtil;
 import javax.json.bind.Jsonb;
 import javax.json.bind.JsonbBuilder;
 import javax.json.bind.JsonbException;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -41,7 +39,7 @@ public class StudentServlet extends HttpServlet {
 
         try{
             resp.setContentType("application/json");
-            StudentBO studentBO = AppInitializer.getContext().getBean(StudentBO.class);
+            StudentBO studentBO = WebAppInitializer.getContext().getBean(StudentBO.class);
 
             resp.getWriter().println(jsonb.toJson(studentBO.getAllStudents()));
         } catch (Throwable t) {
@@ -62,7 +60,7 @@ public class StudentServlet extends HttpServlet {
                 throw new HttpResponseException(400, "Invalid student details", null);
             }
 
-            StudentBO studentBO = AppInitializer.getContext().getBean(StudentBO.class);
+            StudentBO studentBO = WebAppInitializer.getContext().getBean(StudentBO.class);
 
             studentBO.saveStudent(dto);
             resp.setStatus(HttpServletResponse.SC_CREATED);
@@ -95,7 +93,7 @@ public class StudentServlet extends HttpServlet {
                 throw new HttpResponseException(400, "Invalid details", null);
             }
 
-            StudentBO studentBO = AppInitializer.getContext().getBean(StudentBO.class);
+            StudentBO studentBO = WebAppInitializer.getContext().getBean(StudentBO.class);
 
             dto.setId(Integer.parseInt(id));
             studentBO.updateStudent(dto);
@@ -119,7 +117,7 @@ public class StudentServlet extends HttpServlet {
 
             String id = req.getPathInfo().replace("/", "");
 
-            StudentBO studentBO = AppInitializer.getContext().getBean(StudentBO.class);
+            StudentBO studentBO = WebAppInitializer.getContext().getBean(StudentBO.class);
 
             studentBO.deleteStudent(Integer.parseInt(id));
             resp.setStatus(HttpServletResponse.SC_NO_CONTENT);

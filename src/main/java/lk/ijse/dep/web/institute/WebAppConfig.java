@@ -2,8 +2,7 @@ package lk.ijse.dep.web.institute;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
-import org.springframework.context.annotation.Import;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 /**
  * @author : Lucky Prabath <lucky.prabath94@gmail.com>
@@ -12,7 +11,6 @@ import org.springframework.context.annotation.Import;
 
 @ComponentScan
 @Configuration
-@EnableAspectJAutoProxy
-@Import(JPAConfig.class)
-public class AppConfig {
+@EnableWebMvc
+public class WebAppConfig {
 }
