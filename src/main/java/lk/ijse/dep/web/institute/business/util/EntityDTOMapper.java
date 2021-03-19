@@ -18,82 +18,82 @@ import java.util.List;
  * @since : 2021-02-02
  **/
 @Mapper(componentModel = "spring")
-public abstract class EntityDTOMapper {
+public interface EntityDTOMapper {
 
 //    EntityDTOMapper instance = Mappers.getMapper(EntityDTOMapper.class);
 
     @Mapping(source = ".", target = "address")
     @Mapping(source = ".", target = "dob", qualifiedByName = "dob")
-    public abstract Student getStudent(StudentDTO dto);
+    Student getStudent(StudentDTO dto);
 
     @InheritInverseConfiguration
     @Mapping(source = ".", target = "no", qualifiedByName = "no")
     @Mapping(source = ".", target = "addressLine1", qualifiedByName = "addressLine1")
     @Mapping(source = ".", target = "addressLine2", qualifiedByName = "addressLine2")
     @Mapping(source = ".", target = "city", qualifiedByName = "city")
-    public abstract StudentDTO getStudentDTO(Student student);
+    StudentDTO getStudentDTO(Student student);
 
-    public abstract Course getCourse(CourseDTO dto);
+    Course getCourse(CourseDTO dto);
 
-    public abstract CourseDTO getCourseDTO(Course course);
+    CourseDTO getCourseDTO(Course course);
 
-    public abstract List<CourseDTO> getCourseDTOs(List<Course> course);
+    List<CourseDTO> getCourseDTOs(List<Course> course);
 
-    public abstract List<StudentDTO> getStudentDTOs(List<Student> student);
+    List<StudentDTO> getStudentDTOs(List<Student> student);
 
     @Mapping(source = ".", target = "studentCoursePK")
     @Mapping(source = ".", target = "registerDate", qualifiedByName = "registerDate")
-    public abstract StudentCourse getStudentCourse(StudentCourseDTO dto);
+    StudentCourse getStudentCourse(StudentCourseDTO dto);
 
     @InheritInverseConfiguration
     @Mapping(source = ".", target = "studentId", qualifiedByName = "studentId")
     @Mapping(source = ".", target = "courseCode", qualifiedByName = "courseCode")
-    public abstract StudentCourseDTO getStudentCourseDTO(StudentCourse studentCourse);
+    StudentCourseDTO getStudentCourseDTO(StudentCourse studentCourse);
 
     /*methods for get student from dto*/
-    public Address getAddress(StudentDTO dto){
+    default Address getAddress(StudentDTO dto){
         return new Address(dto.getNo(), dto.getAddressLine1(), dto.getAddressLine2(), dto.getCity());
     }
 
     @Named("dob")
-    public Date toDate(StudentDTO dto){
+    default Date toDate(StudentDTO dto){
         return Date.valueOf(dto.getDob());
     }
 
     /*get dto from student*/
     @Named("no")
-    public String getNo(Student student){ return student.getAddress().getNo(); }
+    default String getNo(Student student){ return student.getAddress().getNo(); }
 
     @Named("addressLine1")
-    public String getAddressLine1(Student student){ return student.getAddress().getAddressLine1(); }
+    default String getAddressLine1(Student student){ return student.getAddress().getAddressLine1(); }
 
     @Named("addressLine2")
-    public String getAddressLine2(Student student){ return student.getAddress().getAddressLine2(); }
+    default String getAddressLine2(Student student){ return student.getAddress().getAddressLine2(); }
 
     @Named("city")
-    public String getCity(Student student){ return student.getAddress().getCity(); }
+    default String getCity(Student student){ return student.getAddress().getCity(); }
 
 
     /*method for get StudentCourse*/
 
-    public StudentCoursePK getStudentCoursePK(StudentCourseDTO dto){
+    default StudentCoursePK getStudentCoursePK(StudentCourseDTO dto){
         return new StudentCoursePK(dto.getStudentId(), dto.getCourseCode());
     }
 
     @Named("registerDate")
-    public Date toDate(StudentCourseDTO dto){
+    default Date toDate(StudentCourseDTO dto){
         return Date.valueOf(dto.getRegisterDate());
     }
 
     /*methods for get StudentCourseDTOs*/
 
     @Named("studentId")
-    public int getStudentId(StudentCourse studentCourse){
+    default int getStudentId(StudentCourse studentCourse){
         return studentCourse.getStudentCoursePK().getStudentId();
     }
 
     @Named("courseCode")
-    public String getCourseCode(StudentCourse studentCourse){
+    default String getCourseCode(StudentCourse studentCourse){
         return studentCourse.getStudentCoursePK().getCourseCode();
     }
 }
