@@ -1,5 +1,6 @@
 package lk.ijse.dep.web.institute;
 
+import lk.ijse.dep.web.institute.util.LogConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 /**
@@ -7,6 +8,10 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
  * @since : 2021-03-17
  **/
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+
+    public WebAppInitializer() {
+        LogConfig.initLogging();
+    }
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
