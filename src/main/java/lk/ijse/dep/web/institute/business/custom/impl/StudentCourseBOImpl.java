@@ -2,13 +2,11 @@ package lk.ijse.dep.web.institute.business.custom.impl;
 
 import lk.ijse.dep.web.institute.business.custom.StudentCourseBO;
 import lk.ijse.dep.web.institute.business.util.EntityDTOMapper;
-import lk.ijse.dep.web.institute.dao.custom.StudentCourseDAO;
+import lk.ijse.dep.web.institute.dao.StudentCourseDAO;
 import lk.ijse.dep.web.institute.dto.StudentCourseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import javax.persistence.EntityManager;
 
 /**
  * @author : Lucky Prabath <lucky.prabath94@gmail.com>
